@@ -1,15 +1,37 @@
-## Put comments here that give an overall description of what your
-## functions do
+## The cachesolve function retrieves a matrix and checks to see if it is 
+## inverted. 
+## If it is inverted it returns the matrix. If it is not,
+## it calls a function on the matrix,inverts it and then return.
 
-## Write a short comment describing this function
+## This function creates a matrix inverts and caches it.
 
-makeCacheMatrix <- function(x = matrix()) {
-
+makeCacheMatrix <- function(x = matrix()){
+        mat <- NULL  ## 
+        set <- function(y)
+        {
+                x <<- y
+                mat <<- NULL
+        }
+        get <- function() x 
+        setmatrix <- function(solve) mat <<- solve 
+        getmatrix <- function() mat
+        list(set = set, get = get, setmatrix = setmatrix,                           
+             getmatrix = getmatrix)           
+        
 }
 
 
-## Write a short comment describing this function
+## This function returns an inverted matrix.  
 
 cacheSolve <- function(x, ...) {
-        ## Return a matrix that is the inverse of 'x'
+        
+        mat <- x$getmatrix()
+        if (!is.null(mat)) { ## check if matrix is inverted
+                message("retrieving cached data")
+                return(mat)
+        }
+        d_results <- x$get()
+        mat <- solve(d_results, ...)
+        x$setmatrix(mat)
+        mat               
 }
