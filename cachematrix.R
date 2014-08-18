@@ -1,9 +1,11 @@
+
+
 ## The cachesolve function retrieves a matrix and checks to see if it is 
 ## inverted. 
 ## If it is inverted it returns the matrix. If it is not,
 ## it calls a function on the matrix,inverts it and then return.
 
-## This function creates a matrix inverts and caches it.
+## This function creates a matrix and caches it.
 
 makeCacheMatrix <- function(x = matrix()){
         mat <- NULL  ## 
